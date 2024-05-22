@@ -3,112 +3,168 @@ const express = require("express"),
   fs = require('fs'),
   path = require('path');
 
+let uuid = require("uuid");
+let movies = require("./mockapi/mockapi.js");
+let Users = require("./mockapi/mock-user.js");
+
 const app = express();
 
-let movies = [
-  {
-    id: 1,
-    title: "The Shawshank Redemption",
-    director: "Frank Darabont",
-    genre: "Drama",
-    releaseDate: "14 October 1994",
-    rating: 9.3
-  },
-  {
-    id: 2,
-    title: "The Godfather",
-    director: "Francis Ford Coppola",
-    genre: "Crime, Drama",
-    releaseDate: "24 March 1972",
-    rating: 9.2
-  },
-  {
-    id: 3,
-    title: "The Dark Knight",
-    director: "Christopher Nolan",
-    genre: "Action, Crime, Drama",
-    releaseDate: "18 July 2008",
-    rating: 9.0
-  },
-  {
-    id: 4,
-    title: "The Godfather: Part II",
-    director: "Francis Ford Coppola",
-    genre: "Crime, Drama",
-    releaseDate: "20 December 1974",
-    rating: 9.0
-  },
-  {
-    id: 5,
-    title: "Harry Potter and the Deathly Hallows: Part 2",
-    director: "David Yates",
-    genre: "Adventure, Drama, Fantasy",
-    releaseDate: "15 July 2011",
-    rating: 8.1
-  },
-  {
-    id: 6,
-    title: "The Lord of the Rings: The Return of the King",
-    director: "Peter Jackson",
-    genre: "Adventure, Drama, Fantasy",
-    releaseDate: "17 December 2003",
-    rating: 8.9
-  },
-  {
-    id: 7,
-    title: "Inception",
-    director: "Christopher Nolan",
-    genre: "Action, Adventure, Sci-Fi",
-    releaseDate: "16 July 2010",
-    rating: 8.8
-  },
-  {
-    id: 8,
-    title: "The Matrix",
-    director: "Lana Wachowski, Lilly Wachowski",
-    genre: "Action, Sci-Fi",
-    releaseDate: "31 March 1999",
-    rating: 8.7
-  },
-  {
-    id: 9,
-    title: "The Avengers",  
-    director: "Joss Whedon",
-    genre: "Action, Adventure, Sci-Fi",
-    releaseDate: "4 May 2012",
-    rating: 8.0
-  },
-  {
-    id: 10,
-    title: "Interstellar",
-    director: "Christopher Nolan",
-    genre: "Adventure, Drama, Sci-Fi",
-    releaseDate: "7 November 2014",
-    rating: 8.6
-  }
-];
 
 // Create a write stream (in append mode)
 const accesLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { flags: "a" });
 
 // Setup the logger
 app.use(morgan("combined", { stream: accesLogStream }));
+app.use(express.json());
 
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.send("Welcome To Movie API ")
-});
 
 app.get("/movies", (req, res) => {
   res.json(movies)
 });
 
+// Get data about a single movie by title
+app.get("/movies/:title", async (req, res) => {
+  // Pull the title from the request parameters
+  let { title } = req.params;
+  try {
+    // Find the movie in the array of movies
+    let movie = movies.find((moive) => moive.Title === title);
+    // If the movie is not found, return a 404 error
+    if (!movie) {
+      return res.status(404).send("Movie not found")
+    }
+
+    // If the movie is found, filter the array of
+    // movies to only include the movie with the title
+    movies = movies.filter((moive) => moive.Title === title)
+    // Return the movie
+    res.status(200).json(movie)
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error")
+  } finally {
+    res.end();
+  }
+});
+
+// Get data about a genre by name
+app.get("/movies/genre/:genreName", (req, res) => {
+  let { genreName } = req.params;
+
+  let genre = movies.find(genre => genre.Genre.name === genreName).Genre;
+
+  if (genre) {
+    res.status(200).json(genre)
+  } else {
+    res.status(404).send("Genre not found")
+  }
+});
+
+// Get data about a director by name
+app.get("/movies/director/:directorName", (req, res) => {
+  let { directorName } = req.params;
+
+  let director = movies.find(genre => genre.Director.name === directorName).Director;
+
+  if (director) {
+    res.status(200).json(director)
+  } else {
+    res.status(404).send("Genre not found")
+  }
+});
+
+app.get("/users", (req, res) => { 
+  res.json(Users)
+});
+
+
+// Adds data for a new user to our list of users.
+app.post("/users", (req, res) => {
+  let newUser = req.body;
+
+  if (!newUser.username || !newUser.email || !newUser.password) {
+    return res.status(400).send("ALl fields are required")
+  }
+
+  newUser.id = uuid.v4();
+  Users.push(newUser);
+  return res.status(201).send(newUser);
+
+});
+
+//Add favorite movies to user favorite movies array list
+app.post("/users/:username/:movieTitle", (req, res) => {
+  let { username, movieTitle } = req.params;
+
+  let user = Users.find(user => user.username === username);
+
+  if (user) {
+    user.favoriteMovies.push(movieTitle);
+    res.status(201).json("Movie added to user favorite list successfully");
+  }
+
+  res.status(404).send("User not found");
+
+});
+
+// Update user data
+app.put("/users/:username", (req, res) => {
+  let { username } = req.params;
+  let user = Users.find(user => user.username === username);
+
+  if (user) {
+    if (req.body.username) {
+      user.username = req.body.username;
+    }
+    if (req.body.email) {
+      user.email = req.body.email;
+    }
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+
+    return res.status(200).send("User updated successfully")
+  } else {
+    return res.status(401).send("Unauthorized")
+  }
+
+});
+
+// Delete user data by username
+app.delete("/users/:username", (req, res) => {
+  let { username } = req.params;
+  let user = Users.find(user => user.username === username);
+
+  if (user) {
+    Users = Users.filter(user => user.username !== username);
+    return res.status(200).send("User deleted successfully")
+  } else {
+    return res.status(401).send("Unauthorized")
+  } 
+});
+ 
+// Delete favorite movies from user favorite movies array list
+app.delete("/users/:username/:movieTitle", (req, res) => {
+  let { username, movieTitle } = req.params;
+  let user = Users.find(user => user.username === username);
+
+  if (user) {
+    user.favoriteMovies = user.favoriteMovies.filter(movie => movie !== movieTitle);
+    res.status(200).json("Movie removed from favorite list successfully");
+  }
+
+  res.status(404).send("User not found");
+});
+
+
 app.get("/documentation", (req, res) => {
   res.senFile("public/documentation.html")
-})
+});
 
-app.use((err, req, res, next) => { 
+app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something is broken!")
 });

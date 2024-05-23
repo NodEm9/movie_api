@@ -10,7 +10,7 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
   }
 
   h1 {
@@ -24,12 +24,23 @@
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  }
+
+  #Intro-text, #Intro-text1 {
+    font-size: 1.2em;
+    line-height: 1.6;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: transparent;
   }
 
   p {
     font-size: 1.2em;
     line-height: 1.6;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
   }
 
   table {
@@ -60,13 +71,13 @@
 <body>
   <h1>Documentation</h1>
   <div>
-    <p>The web
+    <p id="Intro-text">The web
       application will provide users with access to information about different
       movies, directors, and genres. Users will be able to sign up, update their
       personal information, and create a list of their favorite movies.
       </p>
       
-    <p>Here is the documentation for the Movie API:</p>
+    <p id="Intro-text1">Here is the documentation for the Movie API:</p>
   
   <h2>Endpoints</h2>
   <table>

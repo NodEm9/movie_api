@@ -1,278 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documentation</title>
-</head>
-<style>
-  *html {
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation</title>
+  </head>
+  <style>
+    *html {
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
 
-  h1 {
-    text-align: center;
-    margin-top: 50px;
-  }
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+    }
 
-  div {
-    margin: 0 auto;
-    width: 80%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-  }
+    div {
+      margin: 0 auto;
+      width: 80%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+    }
 
-  #Intro-text, #Intro-text1 {
-    font-size: 1.2em;
-    line-height: 1.6;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: transparent;
-  }
+    #Intro-text,
+    #Intro-text1 {
+      font-size: 1.2em;
+      line-height: 1.6;
+      border-radius: 5px;
+      padding: 10px;
+      background-color: transparent;
+    }
 
-  p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    padding: 10px;
-  }
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      padding: 10px;
+    }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
 
-  th {
-    background-color: #f0f0f0;
-    padding: 10px;
-    text-align: left;
-  }
+    th {
+      background-color: #f0f0f0;
+      padding: 10px;
+      text-align: left;
+    }
 
-  td {
-    padding: 10px;
-    border-bottom: 1px solid #f0f0f0;
-  }
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #f0f0f0;
+    }
 
-  code {
-    display: block;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-</style>
-<body>
-  <h1>Documentation</h1>
-  <div>
-    <p id="Intro-text">The web
-      application will provide users with access to information about different
-      movies, directors, and genres. Users will be able to sign up, update their
-      personal information, and create a list of their favorite movies.
+    code {
+      display: block;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  </style>
+  <body>
+    <h1>API Documentation</h1>
+    <div>
+      <p id="Intro-text">
+        The web application will provide users with access to information about
+        different movies, directors, and genres. Users will be able to sign up,
+        update their personal information, and create a list of their favorite
+        movies.
       </p>
-      
-    <p id="Intro-text1">Here is the documentation for the Movie API:</p>
-  
-  <h2>Endpoints</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Method</th>
-        <th>Path</th>
-        <th>Description</th>
-        <th>Example Response</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>GET</td>
-        <td>/movies</td>
-        <td>Return json data of list of all movies</td>
-        <td>
-          <code>
-            [
-            {
-              id: 1,
-              Title: "The Shawshank Redemption",
-              Description: "Two imprisoned",
-              Director: {
-                name: "Frank Darabont",
-                birth: "28 January 1959",
-                bio: "Frank Darabont is a Hungarian-American film director, 
-              },
-              Genre: {
-                name: "Drama",
-                description: "Drama is a category of narrative fiction intended ."
-              },
-              ReleaseDate: "14 October 1994",
-              ImageUrl: "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
-              Rating: 9.3
-            },
-            ]
-          </code>
-        </td>
-      </tr>
-      <tr>
-        <td>GET</td>
-        <td>/movies/:title</td>
-        <td>Return json data of a single movie</td>
-        <td>
-          <code>
-            [
-            {
-              id: 1,
-              Title: "The Shawshank Redemption",
-              Description: "Two imprisoned",
-              Director: {
-                name: "Frank Darabont",
-                birth: "28 January 1959",
-                bio: "Frank Darabont is a Hungarian-American film director, 
-              },
-              Genre: {
-                name: "Drama",
-                description: "Drama is a category of narrative fiction intended ."
-              },
-              ReleaseDate: "14 October 1994",
-              ImageUrl: "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
-              Rating: 9.3
-            },
-            ]
-          </code>
-        </td>
-      </tr>
-      <tr>
-        <td>GET</td>
-        <td>/movies/genre/:genreName</td>
-        <td>Return json data of a specific genre</td>
-        <td>
-          <code>
-              Genre: {
-                name: "Drama",
-                description: "Drama is a category of narrative fiction intended ."
-              },
-          </code>
-        </td>
-      </tr>
-      <tr>
-        <td>GET</td>
-        <td>/movies//director/:directorName</td>
-        <td>Return json data of a single director</td>
-        <td>
-          <code>
-            Director: {
-              name: "Frank Darabont",
-              birth: "28 January 1959",
-              bio: "Frank Darabont is a Hungarian-American film director, 
-            }
-          </code>
-        </td>
-      </tr> 
-      <tr>
-        <td>GET</td>
-        <td>/users</td>
-        <td>Return json data of users list.</td>
-        <td>
-        <code>
-          [
-          {
-            "username": "Joe K",
-            "email": "joe@example.com",
-            "password": "12345",
-            "favoriteMovies": [],
-            "id": "730e086e-de28-4a81-aaab-f3638a887600"
-        }
-        ]
-        </code>
-      </td>
-      </tr>
-      <tr>
-        <td>POST</td>
-        <td>/users</td>
-        <td>Create a new user</td>
-        <td>
-          <code>
-            <code>
-              {
-                "username": "Joe K",
-                "email": "joe@example.com",
-                "password": "12345",
-                "favoriteMovies": [],
-            }
-            </code>
-          </code>
-        </td>
-      </tr>
-      <tr>
-        <td>GET</td>
-        <td>/users/:username</td>
-        <td>Return Json object of the new user in the database</td>
-        <td>
-          <code>
-            {
-              "username": "Joe K",
-              "email": "joe@example.com",
-              "password": "12345",
-              "favoriteMovies": [],
-              "id": "730e086e-de28-4a81-aaab-f3638a887600"
-          }
-          </code>
-        </td>
-      </tr>
-      <tr>
-        <td>PUT</td>
-        <td>/users/:username</td>
-        <td>Update a user</td>
-        <td>
-          <code>
-            {
-              "username": "Joe P"
-            }
-          </code>
-        </td>
-      </tr>
-      <tr>
-        <td>POST</td>
-        <td>/users/:username/:movieTitle</td>
-        <td>add a movie to a user's list of favorites</td>
-        <td>
-          <code>
-            {
-              "favoriteMovies": ["The Shawshank Redemption"]
-            }
-          </code>
-        </td>
-      </tr>
-      <tr>
-        <td>DELETE</td>
-        <td>/users/:username</td>
-        <td>Delete a user</td>
-        <td>
-          <p>
-            "/users/Joe%20P"
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td>DELETE</td>
-        <td>/users/:username/:movieTitle</td>
-        <td>Delete a movie from a user's list of favorites</td>
-        <td>
-          <p>
-            "/users/Joe%20P/The%20Shawshank%20Redemption"
-          </p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-</body>
+
+      <p id="Intro-text1">Here is the documentation for the Movie API:</p>
+
+      <h2>Endpoints</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Path</th>
+            <th>Description</th>
+            <th>Example Response</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GET</td>
+            <td>/movies</td>
+            <td>Return json data of list of all movies</td>
+            <td>
+              <code>
+                {
+                  "Genre": {
+                    "name": "Drama"
+                  },
+                  "Director": {
+                    "name": "Frank Darabont",
+                    "birthyear": "1959-01-27T23:00:00.000Z",
+                    "deathyear": "N/A",
+                    "bio": "Frank Darabont is a Hungarian-American film director, screenwriter and producer who has been nominated for three Academy Awards and a Golden Globe Award."
+                  },
+                  "_id": "665193d02ccaed80dfcdce01",
+                  "Title": "The Shawshank Redemption",
+                  "Description": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion, decency, and hope.",
+                  "ReleaseDate": "1994-10-13T23:00:00.000Z",
+                  "ImageUrl": "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
+                  "Rating": 9.3,
+                  "Featured": true
+                },
+              </code>
+            </td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td>/movies/:title</td>
+            <td>Return json data of a single movie</td>
+            <td>
+              <code>
+                {
+                  "Genre": {
+                    "name": "Drama"
+                  },
+                  "Director": {
+                    "name": "Frank Darabont",
+                    "birthyear": "1959-01-27T23:00:00.000Z",
+                    "deathyear": "N/A",
+                    "bio": "Frank Darabont is a Hungarian-American film director, screenwriter and producer who has been nominated for three Academy Awards and a Golden Globe Award."
+                  },
+                  "_id": "665193d02ccaed80dfcdce01",
+                  "Title": "The Shawshank Redemption",
+                  "Description": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion, decency, and hope.",
+                  "ReleaseDate": "1994-10-13T23:00:00.000Z",
+                  "ImageUrl": "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
+                  "Rating": 9.3,
+                  "Featured": true
+                },
+              </code>
+            </td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td>/movies/genre/:genreName</td>
+            <td>Return json data of a specific genre</td>
+            <td>
+              <code>
+                {
+                  "name": "Sci-Fi",
+                  "description": "Science fiction (sometimes shortened to sci-fi or SF) is a genre of speculative fiction that typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life. It has been called the 'literature of ideas', and often explores the potential consequences of scientific, social, and technological innovations."
+                }
+              </code>
+            </td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td>/movies//director/:directorName</td>
+            <td>Return json data of a single director</td>
+            <td>
+              <code>
+                {
+                  "name": "Christopher Nolan",
+                  "birthyear": "1970-07-29T23:00:00.000Z",
+                  "deathyear": "N/A",
+                  "bio": "Christopher Nolan is a British-American film director, producer, and screenwriter. He is one of the highest-grossing directors in history, and among the most successful and acclaimed filmmakers of the 21st century. His films have earned over US$5 billion worldwide and garnered a total of 34 Oscar nominations and ten wins."
+                }
+              </code>
+            </td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td>/users</td>
+            <td>Return json data of users list.</td>
+            <td>
+              <code>
+                [{
+                  "_id": "66559fdba1850d25a06d10c5",
+                  "username": "John DOe",
+                  "password": "12345",
+                  "email": "dojoM@exmaple.com",
+                  "birthday": "1999-05-20T00:00:00.000Z",
+                  "role": "",
+                  "createdAt": "2024-05-28T09:10:46.439Z",
+                  "favoriteMovies": [],
+                  "__v": 0
+                },
+                {
+                  "_id": "6655c0515fa572e1179e6f37",
+                  "username": "Mary Jane",
+                  "password": "12345",
+                  "email": "maryjaneM@exmaple.com",
+                  "birthday": "1999-05-20T00:00:00.000Z",
+                  "role": "user",
+                  "createdAt": "2024-05-28T11:26:44.511Z",
+                  "favoriteMovies": [],
+                  "__v": 0
+                }]           
+              </code>
+            </td>
+          </tr>
+          <tr>
+            <td>POST</td>
+            <td>/users</td>
+            <td>Create a new user</td>
+            <td>
+              <code>
+                <code>
+                  {
+                    "_id": "66559fdba1850d25a06d10c5",
+                    "username": "John DOe",
+                    "password": "12345",
+                    "email": "dojoM@exmaple.com",
+                    "birthday": "1999-05-20T00:00:00.000Z",
+                    "role": "",
+                    "createdAt": "2024-05-28T09:10:46.439Z",
+                    "favoriteMovies": [],
+                    "__v": 0
+                  },
+                </code>
+              </code>
+            </td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td>/users/:username</td>
+            <td>Return Json object of a single user by the username</td>
+            <td>
+              <code>
+                {
+                  "_id": "66559fdba1850d25a06d10c5",
+                  "username": "John DOe",
+                  "password": "12345",
+                  "email": "dojoM@exmaple.com",
+                  "birthday": "1999-05-20T00:00:00.000Z",
+                  "role": "",
+                  "createdAt": "2024-05-28T09:10:46.439Z",
+                  "favoriteMovies": [],
+                  "__v": 0
+                },
+              </code>
+            </td>
+          </tr>
+          <tr>
+            <td>PUT</td>
+            <td>/users/:username</td>
+            <td>Update a user</td>
+            <td>
+              <code> { "username": "Joe P" } </code>
+            </td>
+          </tr>
+          <tr>
+            <td>POST</td>
+            <td>/users/:username/movies/:MovieID</td>
+            <td>add a movie to a user's list of favorites with reference to the movie id.</td>
+            <td>
+              <code>
+                {
+                  "_id": "66559fdba1850d25a06d10c5",
+                  "username": "John DOe",
+                  "password": "12345",
+                  "email": "dojoM@exmaple.com",
+                  "birthday": "1999-05-20T00:00:00.000Z",
+                  "role": "",
+                  "createdAt": "2024-05-28T09:10:46.439Z",
+                  "favoriteMovies": [
+                    "6655beaf1124d44932cdcdf6"
+                  ],
+                  "__v": 0
+                }  
+              </code>
+            </td>
+          </tr>
+          <tr>
+            <td>DELETE</td>
+            <td>/users/:username</td>
+            <td>Delete a user</td>
+            <td>
+              <p>"/users/Joe%20P"</p>
+            </td>
+          </tr>
+          <tr>
+            <td>DELETE</td>
+            <td>/users/:username/movies/:MovieID</td>
+            <td>Delete a movie from a user's list of favorites</td>
+            <td>
+              <code>"/users/Joe%20P/moives/6655beaf1124d44932cdcdf6"</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>

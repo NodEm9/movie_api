@@ -14,10 +14,14 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
+    "mongoose": "^8.4.0",
     "morgan": "^1.10.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "eslint": "^9.3.0",
+    "globals": "^15.3.0",
     "nodemon": "^3.1.0"
   }
 }

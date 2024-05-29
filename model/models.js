@@ -28,20 +28,20 @@ const movieSchema = mongoose.Schema({
 
 // Create a schema for the users
 const userSchema = mongoose.Schema({
-  username: {
+  Username: {
     type: String, 
     required: true
   },
-  password: {
+  Password: {
     type: String,
     required: true
   },
-  email: {
+  Email: {
     type: String,
     required: true
   },
   birthday: Date,
-  role: {
+  Role: {
     type: String,
     default: 'user'
   },

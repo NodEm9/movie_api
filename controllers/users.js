@@ -2,8 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URI);
-
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.connect('mongodb://localhost:27017/movieDB'); for local testing
 
 let Models = require("../model/models.js");

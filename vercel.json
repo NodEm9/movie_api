@@ -1,6 +1,7 @@
 {
   "version": 2,
-  "buildCommand": [
+  "buildCommand": "npm run build",
+  "build": [
     {
       "src": "index.js",
       "use": "@now/node"

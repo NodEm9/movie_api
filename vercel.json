@@ -15,9 +15,8 @@
   ],
   "routes": [
     {
-      "/movies": "/movies",
-      "users": "/users",
-      "/documentation.html": "documentation.html"
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }

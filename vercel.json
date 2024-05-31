@@ -1,9 +1,6 @@
 {
   "version": 2,
- "build": "node index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
+ "build": "node ./build index.js",
   "main": "index.js",
   "repository": {
     "type": "git",

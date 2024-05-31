@@ -77,9 +77,9 @@ app.get("/documentation", (req, res) => {
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something is broken!")
-});
+}); 
 
 // Listen for requests
 app.listen(port, "0.0.0.0", () => {
-  console.log(`Server is running on port ${port}`)
-});
+  console.log(`Server is running on port ${port}`) 
+}); 

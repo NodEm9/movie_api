@@ -5,19 +5,19 @@ const express = require("express"),
   cors = require('cors');
 
 const dotenv = require('dotenv');
-dotenv.config(); // Load environment variables from a .env file into process.env
+dotenv.config();
 
 const { check } = require('express-validator');
 
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URI);
-// mongoose.connect('mongodb://localhost:27017/movieDB'); for local testing
+mongoose.connect(process.env.MONGODB_URI);
+// mongoose.connect('mongodb://localhost:27017/movieDB'); // for local testing
 
 
 let movies = require("./controllers/movies.js");
-let users = require("./controllers/users.js");
+let users = require("./controllers/users.js");  
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 // Create an instance of express
 var app = express();

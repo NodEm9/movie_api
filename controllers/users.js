@@ -2,8 +2,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URI);
-// mongoose.connect('mongodb://localhost:27017/movieDB'); for local testing
+mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect('mongodb://localhost:27017/movieDB'); //for local testing
 
 let Models = require("../model/models.js");
 let Users = Models.User;
@@ -11,7 +11,7 @@ let Users = Models.User;
 const { validationResult } = require('express-validator');
 
 // Get all users in the database
-async function getUsers(req, res) {
+async function getUsers(req, res) {         
   await Users.find()
     .then(users => {
       res.status(200).json(users)

@@ -2,8 +2,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URI);
-// mongoose.connect('mongodb://localhost:27017/movieDB'); for local testing
+mongoose.connect(process.env.MONGODB_URI);
+// mongoose.connect('mongodb://localhost:27017/movieDB'); // for local testing
 
 let Models = require("../model/models.js");
 
@@ -12,7 +12,7 @@ let Movies = Models.Movie;
 // Get the list of all movies
 async function getMovies(req, res) { 
   await Movies.find()
-    .then(movies => res.status(200).json(movies))
+    .then(movies => res.status(200).json(movies))    
     .catch(err => {
       console.error(err);
       res.status(500).send("Internal Server Error")

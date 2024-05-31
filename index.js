@@ -2,8 +2,9 @@ const express = require("express"),
   morgan = require('morgan'),
   fs = require('fs'),
   path = require('path'),
-  cors = require('cors')
-dotenv = require('dotenv');
+  cors = require('cors');
+
+const dotenv = require('dotenv');
 dotenv.config();
 
 const { check } = require('express-validator');
@@ -37,7 +38,7 @@ require('./controllers/auth/passport');
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.sendFile("public/index.html")
+  res.send("Welcome to Movie Oasis!")
 });
 
 // Movies routes
@@ -74,7 +75,7 @@ app.delete("/users/:Username/movies/:MovieID", passport.authenticate("jwt", { se
 
 // Get the documentation
 app.get("/documentation", (req, res) => {
-  res.senFile("public/documentation.html")
+  res.senFile("public")
 });
 
 // Error handling
@@ -84,6 +85,8 @@ app.use((err, req, res, next) => {
 }); 
 
 // Listen for requests
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
   console.log(`Server is running on port ${port}`) 
-}); 
+});  
+
+module.exports = app;

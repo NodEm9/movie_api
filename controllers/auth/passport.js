@@ -1,13 +1,14 @@
 const passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy,
   Models = require('../../model/models.js'),
-  passportJwt = require('passport-jwt'),
-  dotenv = require('dotenv');
+  passportJwt = require('passport-jwt');
 
+const dotenv = require('dotenv');
+dotenv.config();
 dotenv.config()
 
 
-let Users = Models.User,  
+let Users = Models.User,
   JWTStrategy = passportJwt.Strategy,
   ExtractJWT = passportJwt.ExtractJwt;
 
@@ -23,7 +24,7 @@ passport.use(
         .then((user) => {
           if (!user) {
             return callback(null, false, { message: 'Incorrect username' });
-          } 
+          }
           if (!user.validatePassword(Password)) {
             return callback(null, false, { message: 'Incorrect password' });
 

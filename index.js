@@ -2,11 +2,17 @@ const express = require("express"),
   morgan = require('morgan'),
   fs = require('fs'),
   path = require('path'),
-  cors = require('cors');
-const { check } = require('express-validator');
-const mongoose = require('mongoose');
+  cors = require('cors')
+dotenv = require('dotenv');
+dotenv.config();
 
-mongoose.connect('mongodb://localhost:27017/movieDB');
+const { check } = require('express-validator');
+
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URI);
+// mongoose.connect('mongodb://localhost:27017/movieDB'); for local testing
+
+
 let movies = require("./controllers/movies.js");
 let users = require("./controllers/users.js");
 

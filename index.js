@@ -5,7 +5,7 @@ const express = require("express"),
   cors = require('cors');
 
 const dotenv = require('dotenv');
-dotenv.config();
+dotenv.config(); // Load environment variables from a .env file into process.env
 
 const { check } = require('express-validator');
 

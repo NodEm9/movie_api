@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "entrypoint": "index.js",
+      "branches": ["main"],
+      "use": "@now/node",
+      "config": { "zeroConfig": true }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.js"
+    }
+  ]
+}

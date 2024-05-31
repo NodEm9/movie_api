@@ -17,6 +17,17 @@
       background-color: #ffffff;
     }
 
+    header {
+      background-color: transparent;
+      color: #fff;
+      padding: 10px;
+      border-bottom: 1px solid #b5b3b3;
+    }
+
+    #web-name {
+      margin: 0;
+    }
+
     h1 {
       text-align: center;
       margin-top: 50px;
@@ -71,9 +82,30 @@
       border-radius: 5px;
       margin-top: 10px;
     }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    ul {
+      display: flex;
+      list-style-type: none;
+      gap: 10px;
+    }
   </style>
   <body>
-    <h1>API Documentation</h1>
+    <header>
+      <nav>
+        <h1 id="web-name"><a href="/" >Movie Oasis</a></h1>
+        <ul>
+          <li><a href="/movies">Movies</a></li>
+          <li><a href="/users">Users</a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+        </ul>
+      </nav>
+    </header>
+   <section> <h1>API Documentation</h1></section>
     <div>
       <p id="Intro-text">
         The web application will provide users with access to information about

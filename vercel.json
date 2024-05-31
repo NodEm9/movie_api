@@ -1,19 +1,13 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "build": "index.js",
-      "use": "@now/node"
-    },
-    {
-      "src": "public/**/*",
-      "use": "@now/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.js"
-    }
-  ]
+ "build": "node index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+"
+  }
+
 }

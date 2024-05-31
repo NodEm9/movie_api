@@ -7,7 +7,7 @@ const passport = require('passport'),
 dotenv.config()
 
 
-let Users = Models.User,
+let Users = Models.User,  
   JWTStrategy = passportJwt.Strategy,
   ExtractJWT = passportJwt.ExtractJwt;
 

@@ -1,7 +1,6 @@
 {
   "version": 2,
  "build": "node ./build index.js",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+"

@@ -10,10 +10,10 @@ mongoose.connect('mongodb://localhost:27017/movieDB');
 let movies = require("./controllers/movies.js");
 let users = require("./controllers/users.js");
 
+const port = process.env.PORT || 8080;
+
 // Create an instance of express
 var app = express();
-
-const port = process.env.PORT || 8080;
 
 // Create a write stream (in append mode)
 const accesLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { flags: "a" });
@@ -31,9 +31,7 @@ require('./controllers/auth/passport');
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  let responseText = "<h1 style='text-align: center; padding: 50;'>" +
-    'Welcome to Movie Oasis!' + "</h1>";
-  res.send(responseText)
+  res.sendFile("public/index.html")
 });
 
 // Movies routes

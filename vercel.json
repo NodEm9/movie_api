@@ -1,11 +1,24 @@
 {
   "version": 2,
- "build": {"src": "node ./build index.js"},
- "routes": {
-   "/": "index.html",
-   "/movies": "/movies",
-   "users": "/users",
-   "/documentation.html": "documentation.html"
- }
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@now/node-server",
+      "config": {
+        "zeroConfig": true
+      }
+    },
+    {
+      "src": "public/**/*",
+      "use": "@now/static"
+    }
+  ],
+  "routes": [
+    {
+      "/": "index.html",
+      "/movies": "/movies",
+      "users": "/users",
+      "/documentation.html": "documentation.html"
+    }
+  ]
 }
- 

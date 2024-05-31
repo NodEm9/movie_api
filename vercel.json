@@ -2,6 +2,14 @@
   "version": 2,
   "builds": [
     {
+      "buildCommand": "index.js",
+      "use": "@now/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@now/node"
+    },
+    {
       "src": "index.js",
       "use": "@now/node"
     }

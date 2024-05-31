@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGO_URI);
 let movies = require("./controllers/movies.js");
 let users = require("./controllers/users.js");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 // Create an instance of express
 var app = express();
@@ -85,7 +85,7 @@ app.use((err, req, res, next) => {
 }); 
 
 // Listen for requests
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`Server is running on port ${port}`) 
 });  
 

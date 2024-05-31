@@ -1,6 +1,6 @@
 {
   "version": 2,
- "build": {"/": "node ./build index.js"},
+ "build": {"node": "node ./build index.js"},
  "routes": {
    "/": "index.html",
    "/movies": "/movies",

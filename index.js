@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGO_URI);
 let movies = require("./controllers/movies.js");
 let users = require("./controllers/users.js");
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 
 // Create an instance of express
 var app = express();

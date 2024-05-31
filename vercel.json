@@ -15,7 +15,6 @@
   ],
   "routes": [
     {
-      "/": "index.html",
       "/movies": "/movies",
       "users": "/users",
       "/documentation.html": "documentation.html"

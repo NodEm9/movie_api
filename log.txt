@@ -1100,3 +1100,4 @@
 ::1 - - [31/May/2024:19:33:22 +0000] "POST /login?Username=JohnDoe&Password=123456 HTTP/1.1" 200 726 "-" "PostmanRuntime/7.39.0"
 ::1 - - [31/May/2024:19:33:53 +0000] "GET /movies/director/Christopher%20Nolan HTTP/1.1" 401 - "-" "PostmanRuntime/7.39.0"
 ::1 - - [31/May/2024:19:34:20 +0000] "GET /movies/director/Christopher%20Nolan HTTP/1.1" 200 417 "-" "PostmanRuntime/7.39.0"
+::ffff:127.0.0.1 - - [01/Jun/2024:07:45:08 +0000] "POST /login?Username=GladysD&Password=12345 HTTP/1.1" 200 726 "-" "Thunder Client (https://www.thunderclient.com)"

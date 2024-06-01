@@ -4,18 +4,17 @@ const express = require("express"),
   path = require('path'),
   cors = require('cors');
 
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const { check } = require('express-validator');
-
-const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI, { dbName: 'movieDB' });
 // mongoose.connect('mongodb://localhost:27017/movieDB'); // for local testing
 
+const { check } = require('express-validator');
 
 let movies = require("./controllers/movies.js");
-let users = require("./controllers/users.js");  
+let users = require("./controllers/users.js");
 
 const port = process.env.PORT || 8080;
 
@@ -82,11 +81,11 @@ app.get("/documentation", (req, res) => {
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something is broken!")
-}); 
+});
 
 // Listen for requests
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`) 
-});  
+  console.log(`Server is running on port ${port}`)
+});
 
 module.exports = app;

@@ -1,11 +1,10 @@
-const dotenv = require("dotenv");
-dotenv.config(); 
-
 const jwt = require("jsonwebtoken"),
   passport = require("passport");
-
+  
 require("./passport.js");
 
+const dotenv = require("dotenv");
+dotenv.config(); 
 
 
 let generateJWTToken = (user) => {

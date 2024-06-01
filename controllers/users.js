@@ -3,7 +3,7 @@ dotenv.config();
 const mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGO_URI, { dbName: 'movieDB' });
-// mongoose.connect('mongodb://localhost:27017/movieDB');for local testing
+// mongoose.connect('mongodb://localhost:27017/movieDB') //;for local testing
 
 let Models = require("../model/models.js");
 let Users = Models.User;

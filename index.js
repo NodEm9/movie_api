@@ -1,22 +1,22 @@
 const express = require("express"),
-  morgan = require('morgan'),
-  fs = require('fs'),
-  path = require('path'),
-  cors = require('cors');
+  morgan = require("morgan"),
+  fs = require("fs"),
+  path = require("path"),
+  cors = require("cors");
 
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URI, { dbName: 'movieDB' });
-// mongoose.connect('mongodb://localhost:27017/movieDB'); // for local testing
+mongoose.connect(process.env.MONGO_URI, { dbName: "movieDB" });
+// mongoose.connect("mongodb://localhost:27017/movieDB"); // for local testing
 
-const { check } = require('express-validator');
+const { check } = require("express-validator");
 
 let movies = require("./controllers/movies.js");
 let users = require("./controllers/users.js");
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080; /* eslint no-undef: off */
 
 // Create an instance of express
 var app = express();
@@ -27,12 +27,12 @@ const accesLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { f
 // Setup the logger
 app.use(morgan("combined", { stream: accesLogStream }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); 
 app.use(cors());
 
-let auth = require("./controllers/auth/auth")(app);
-let passport = require('passport');
-require('./controllers/auth/passport');
+let auth = require("./controllers/auth/auth")(app); /* eslint no-unused-vars: off */
+let passport = require("passport");
+require("./controllers/auth/passport");
 
 app.use(express.static("public"));
 

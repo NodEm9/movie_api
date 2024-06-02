@@ -27,9 +27,7 @@ passport.use(
           }
           if (!user.validatePassword(Password)) {
             return callback(null, false, { message: 'Incorrect password' });
-
           } else {
-            console.log("finshed")
             return callback(null, user)
           }
         })
@@ -41,12 +39,12 @@ passport.use(
 passport.use(new JWTStrategy(
   {
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey: process.env.JWT_SECRET_KEY
+    secretOrKey: process.env.JWT_SECRET_KEY 
   }, async (jwtPayload, callback) => {
     return await Users.findById(jwtPayload._id)
       .then((user) => {
         return callback(null, user)
       }).catch((err) => {
         return callback(err)
-      });
+      }); /* eslint no-undef: off */
   }));

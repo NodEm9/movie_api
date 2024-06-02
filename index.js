@@ -3,7 +3,7 @@ const express = require("express"),
   fs = require("fs"),
   path = require("path"),
   cors = require("cors");
-
+ 
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 app.use(cors());
 
-let auth = require("./controllers/auth/auth")(app); /* eslint no-unused-vars: off */
+require("./controllers/auth/auth")(app); /* eslint no-unused-vars: off */
 let passport = require("passport");
 require("./controllers/auth/passport");
 
@@ -74,14 +74,20 @@ app.delete("/users/:Username/movies/:MovieID", passport.authenticate("jwt", { se
 
 // Get the documentation
 app.get("/documentation", (req, res) => {
-  res.senFile("public")
+  res.sendFile("public")
 });
 
 // Error handling
-app.use((err, req, res, next) => {
-  console.error(err.stack);
+function errorHandler (err, req, res, next) {
+  if (res.headersSent) {
+    return next(err)
+  }
   res.status(500).send("Something is broken!")
-});
+  res.render('error', { error: err })
+}
+
+// Error handling middleware
+app.use(errorHandler);
 
 // Listen for requests
 app.listen(port, () => {

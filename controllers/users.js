@@ -11,12 +11,11 @@ let Users = Models.User;
 const { validationResult } = require("express-validator");
 
 // Get all users in the database
-async function getUsers(req, res) {         
+async function getUsers(req, res) {
   await Users.find()
     .then(users => {
       res.status(200).json(users)
     }).catch(err => {
-      console.error(err);
       res.status(500).send("Error: " + err)
     });
 };
@@ -45,12 +44,10 @@ async function addUser(req, res) {
         })
           .then(user => res.status(201).json(user))
           .catch(err => {
-            console.error(err);
             res.status(500).send("Error: " + err)
           })
       }
     }).catch((err) => {
-      console.error(err);
       res.status(500).send("Error: " + err)
     });
 };
@@ -69,7 +66,6 @@ async function getUserByUsername(req, res) {
         res.status(404).send("User not found")
       }
     }).catch(err => {
-      console.error(err);
       res.status(500).send("Error: " + err)
     });
 };
@@ -83,7 +79,6 @@ async function addFavoriteMovie(req, res) {
     .then((updateUdser) => {
       res.json(updateUdser)
     }).catch(err => {
-      console.error(err);
       res.status(500).send("Error: " + err)
     });
 };
@@ -96,7 +91,6 @@ async function removeFavoriteMovie(req, res) {
     .then((updateUser) => {
       res.json(updateUser)
     }).catch(err => {
-      console.error(err);
       res.status(500).send("Error: " + err)
     });
 };
@@ -125,7 +119,6 @@ async function updateUser(req, res) {
     .then((updateUser) => {
       res.json(updateUser)
     }).catch(err => {
-      console.error(err);
       res.status(500).send("Error: " + err)
     });
 };
@@ -138,11 +131,9 @@ async function deleteUser(req, res) {
     } else {
       res.status(200).send(req.params.Username + " was deleted.");
     }
-  })
-    .catch(err => {
-      console.error(err);
-      res.status(500).send("Error: " + err)
-    });
+  }).catch(err => {
+    res.status(500).send("Error: " + err)
+  });
 }
 
 module.exports = {

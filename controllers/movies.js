@@ -10,12 +10,11 @@ let Models = require("../model/models.js");
 let Movies = Models.Movie;
 
 // Get the list of all movies
-async function getMovies(req, res) { 
+async function getMovies(req, res) {
   await Movies.find()
-    .then(movies => res.status(200).json(movies))    
+    .then(movies => res.status(200).json(movies))
     .catch(err => {
-      console.error(err);
-      res.status(500).send("Internal Server Error")
+      res.status(500).send("Error: " + err)
     }).finally(() => {
       res.end();
     });
@@ -32,13 +31,12 @@ async function getMovieByTitle(req, res) {
       }
     })
     .catch(err => {
-      console.error(err);
       res.status(500).send("Error: " + err)
     });
 };
 
 // Get data about a genre by name
-async function getGenreByName(req, res) { 
+async function getGenreByName(req, res) {
   await Movies.findOne({ "Genre.name": req.params.genreName })
     .then((genre) => {
       if (genre) {
@@ -48,7 +46,6 @@ async function getGenreByName(req, res) {
       }
     })
     .catch(err => {
-      console.error(err);
       res.status(500).send("Error: " + err)
     });
 };
@@ -63,7 +60,6 @@ async function getDirectorByName(req, res) {
         res.status(400).send("Director not found")
       }
     }).catch(err => {
-      console.error(err);
       res.status(500).send("Error: " + err)
     });
 };

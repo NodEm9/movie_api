@@ -14,7 +14,9 @@
       "ol",
       "strong",
       "ul",
-      "script"
+      "script",
+      "blockquote",
+      "pre"
     ]
   },
   "line_length": false

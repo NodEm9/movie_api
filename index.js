@@ -21,6 +21,7 @@ const port = process.env.PORT || 8080; /* eslint no-undef: off */
 // Create an instance of express
 var app = express();
 
+
 // Create a write stream (in append mode)
 const accesLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { flags: "a" });
 

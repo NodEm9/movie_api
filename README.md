@@ -34,4 +34,4 @@ After that, you can create and enpoint and then add listern with a console log t
 
 Now you can go to the package.json file and add a script you can use in the terminal to run the program locally.
 
-If you user a mockup movies data, after starting the server if you go to the ``localhost:8080`` you should see the list of movies display on the screen.
+If you use a mockup movie data, after starting the server, if you go to ``localhost:8080`` on your browser you should see a list of movies displayed on your screen.

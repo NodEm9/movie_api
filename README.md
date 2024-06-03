@@ -5,10 +5,11 @@
 This API will provide its users with new and older movies on the movie chats. The API is a RestAPI architecture design with various endpoints for getting list of all movies, genre, info about movie director. It also has enpionts for ``CRUD`` actions pertaining to users of the app which develpoer will need in the frontend to design user reqistration, allowing user to add favorite movies collections to thier favorite movie array, edit user details and unregistering users. Data are stored in MongoDB, this means you have to work with just two collections namely ``movies collection`` and ``users collcetion`` in a database called ``movieDB``.
 
 Below, I've included how you can install and use this API including examples of request and response types.
-See documentation: [Documentation](https://movie-api-h54p.onrender.com/documentation.html)
-Checkout the API live [follow link](https://movie-api-h54p.onrender.com/documentation.html)
 
-Copy to clone this repository: <https://github.com/NodEm9/movie_api.git>
+- See documentation: [Documentation](https://movie-api-h54p.onrender.com/documentation.html)
+- Checkout the API live [follow link](https://movie-api-h54p.onrender.com/documentation.html)
+
+- Copy to clone this repository: <https://github.com/NodEm9/movie_api.git>
 
 ## Tech Stack
 

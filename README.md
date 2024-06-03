@@ -27,4 +27,4 @@ You will be building your own project so you could ass as many as more depencies
 
 #### index.js**
 
-<img src="img/indexjs.png" alt="server code image" width="550" height="350" style="border-radius: 8px"/>
+<img src="img/indexjs.png" alt="server code image" />

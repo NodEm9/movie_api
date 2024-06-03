@@ -1,0 +1,21 @@
+{
+  "no-inline-html": {
+    "allowed_elements": [
+      "a",
+      "abbr",
+      "acronym",
+      "img",
+      "b",
+      "br",
+      "code",
+      "em",
+      "i",
+      "li",
+      "ol",
+      "strong",
+      "ul",
+      "script"
+    ]
+  },
+  "line_length": false
+}

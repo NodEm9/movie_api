@@ -27,4 +27,4 @@ You will be building your own project so you could ass as many as more depencies
 
 #### index.js**
 
-<img src="img/server-file.png" alt="server code image" width="600" height="400"/>
+<img src="img/server-mock.png" alt="server code image" width="600" height="400"/>

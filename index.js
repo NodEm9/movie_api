@@ -21,6 +21,9 @@ const port = process.env.PORT || 8080; /* eslint no-undef: off */
 // Create an instance of express
 var app = express();
 
+app.get("/", (req, res) => {
+  res.json(movies);
+});
 
 // Create a write stream (in append mode)
 const accesLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { flags: "a" });
@@ -40,6 +43,7 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.send("Welcome to Movie Oasis!")
 });
+
 
 // Movies routes
 app.get("/movies", passport.authenticate("jwt", { session: false }), movies.getMovies);

@@ -1,4 +1,4 @@
-# Movies Oasis API
+# Movies  API
 
 **Project Owner:** *Emmanuel Nodolomwanyi*
 

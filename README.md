@@ -32,7 +32,6 @@ You will need dependencies to make this project work like ``Passport.js``, ``JSO
 Create an index.js file where the server will be located and add this code as shown blow. <br>
 <img src="img/server-mock-1.png" alt="server code image" /> <br>
 After that, you can create and enpoint and then add listern with a console log that will print on the console when the server is connected and running sucessfully or return an error if something is properly set up. <br>
-<img src="img/server-mock.png" alt="server code image" width="670"/>
 Now you can go to the package.json file and add a script you can use in the terminal to run the program locally.
 
 If you use a mockup movie data, after starting the server, if you go to ``localhost:8080`` on your browser you should see a list of movies displayed on your screen.

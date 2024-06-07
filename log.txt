@@ -1113,3 +1113,4 @@
 ::1 - - [02/Jun/2024:17:17:58 +0000] "GET /documentation.html HTTP/1.1" 304 - "http://localhost:8080/documentation.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 ::1 - - [02/Jun/2024:17:18:05 +0000] "GET /documentation.htm HTTP/1.1" 404 156 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 ::1 - - [02/Jun/2024:17:18:18 +0000] "GET /documentation.html HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [07/Jun/2024:10:11:51 +0000] "GET /movies HTTP/1.1" 200 13150 "-" "Thunder Client (https://www.thunderclient.com)"

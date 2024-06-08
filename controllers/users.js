@@ -3,7 +3,7 @@ dotenv.config();
 const mongoose = require("mongoose");
 
 mongoose.connect(process.env.MONGO_URI, { dbName: "movieDB" }); /* eslint no-undef: off */
-// mongoose.connect("mongodb://localhost:27017/movieDB") //;for local testing
+
 
 let Models = require("../model/models.js");
 let Users = Models.User;
@@ -110,7 +110,7 @@ async function updateUser(req, res) {
   await Users.findOneAndUpdate({ Username: req.params.Username }, {
     $set: {
       Username: req.body.Username,
-      Password: req.body.Password,
+      Password: Users.hashPassword(req.body.Password),
       Email: req.body.Email,
       Birthday: req.body.Birthday,
       Role: req.body.Role,

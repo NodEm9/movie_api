@@ -9,7 +9,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URI, { dbName: "movieDB" });
-// mongoose.connect("mongodb://localhost:27017/movieDB"); // for local testing
+
 
 const { check } = require("express-validator");
 
@@ -20,10 +20,6 @@ const port = process.env.PORT || 8080; /* eslint no-undef: off */
 
 // Create an instance of express
 var app = express();
-
-app.get("/", (req, res) => {
-  res.json(movies);
-});
 
 // Create a write stream (in append mode)
 const accesLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { flags: "a" });

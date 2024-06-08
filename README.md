@@ -1,4 +1,4 @@
-# Movies  API
+# MyFlix  API
 
 **Project Owner:** *Emmanuel Nodolomwanyi*
 

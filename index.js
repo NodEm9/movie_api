@@ -4,12 +4,13 @@ const express = require("express"),
   path = require("path"),
   cors = require("cors");
  
+const allowedOrigins = require("./middleware/allow--origin.js");
+
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URI, { dbName: "movieDB" });
-
 
 const { check } = require("express-validator");
 
@@ -28,6 +29,7 @@ const accesLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { f
 app.use(morgan("combined", { stream: accesLogStream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
+app.use(allowedOrigins);
 app.use(cors());
 
 require("./controllers/auth/auth")(app); /* eslint no-unused-vars: off */

@@ -1119,3 +1119,5 @@
 ::ffff:127.0.0.1 - - [08/Jun/2024:12:38:26 +0000] "POST /logn?Username=John4Doeooo&Password=12345 HTTP/1.1" 404 144 "-" "Thunder Client (https://www.thunderclient.com)"
 ::ffff:127.0.0.1 - - [08/Jun/2024:12:38:37 +0000] "GET /movies HTTP/1.1" 200 26340 "-" "Thunder Client (https://www.thunderclient.com)"
 ::ffff:127.0.0.1 - - [08/Jun/2024:12:38:45 +0000] "POST /logn?Username=John4Doeooo&Password=12345 HTTP/1.1" 404 144 "-" "Thunder Client (https://www.thunderclient.com)"
+::1 - - [11/Jun/2024:09:56:06 +0000] "GET / HTTP/1.1" 200 23 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+::1 - - [11/Jun/2024:09:56:06 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"

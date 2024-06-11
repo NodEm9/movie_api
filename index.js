@@ -29,8 +29,7 @@ const accesLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { f
 app.use(morgan("combined", { stream: accesLogStream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
-app.use(allowedOrigins);
-app.use(cors());
+app.use(cors(allowedOrigins));
 
 require("./controllers/auth/auth")(app); /* eslint no-unused-vars: off */
 let passport = require("passport");

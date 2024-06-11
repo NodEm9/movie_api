@@ -4,11 +4,10 @@ const express = require("express"),
   path = require("path"),
   cors = require("cors");
  
-const allowedOrigins = require("./middleware/allow--origin.js");
 
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-dotenv.config();
+require("dotenv").config();
+
 
 mongoose.connect(process.env.MONGO_URI, { dbName: "movieDB" });
 
@@ -29,7 +28,16 @@ const accesLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { f
 app.use(morgan("combined", { stream: accesLogStream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
-app.use(cors(allowedOrigins));
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (process.env.ALLOWED_ORIGINS.split(",").indexOf(origin) === -1) {
+      var msg = "The CORS policy for this site does not allow access from the specified Origin.";
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 require("./controllers/auth/auth")(app); /* eslint no-unused-vars: off */
 let passport = require("passport");

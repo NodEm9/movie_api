@@ -8,8 +8,9 @@ const express = require("express"),
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-
 mongoose.connect(process.env.MONGO_URI, { dbName: "movieDB" });
+
+let allowedOrigins = ["http://localhost:8080", "http://localhost:1234", "https://movie-api-h54p.onrender.com"];
 
 const { check } = require("express-validator");
 
@@ -31,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
-    if (process.env.ALLOWED_ORIGINS.indexOf(origin) === -1) {
+    if (allowedOrigins.indexOf(origin) === -1) {
       var msg = "The CORS policy for this site does not allow access from the specified Origin.";
       return callback(new Error(msg), false);
     } 

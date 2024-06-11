@@ -52,7 +52,7 @@ app.get("/", (req, res) => {
 
 
 // Movies routes
-app.get("/movies", movies.getMovies);
+app.get("/movies", passport.authenticate("jwt", { session: false }), movies.getMovies);
 app.get("/movies/:title", passport.authenticate("jwt", { session: false }), movies.getMovieByTitle);
 app.get("/movies/genre/:genreName", passport.authenticate("jwt", { session: false }), movies.getGenreByName);
 app.get("/movies/director/:directorName", passport.authenticate("jwt", { session: false }), movies.getDirectorByName);

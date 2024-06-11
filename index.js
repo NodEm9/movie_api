@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
-    if (process.env.ALLOWED_ORIGINS.split(",").indexOf(origin) === -1) {
+    if (process.env.ALLOWED_ORIGINS.indexOf(origin) === -1) {
       var msg = "The CORS policy for this site does not allow access from the specified Origin.";
       return callback(new Error(msg), false);
     }

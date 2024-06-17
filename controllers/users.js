@@ -42,7 +42,7 @@ async function addUser(req, res) {
           Birthday: req.body.Birthday,
           Role: req.body.Role
         })
-          .then(user => res.status(201).json(user))
+          .then(user => res.status(201).json({ message: `Account ${user} was created.` }, user))
           .catch(err => {
             res.status(500).send("Error: " + err)
           })

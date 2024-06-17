@@ -42,7 +42,7 @@ async function addUser(req, res) {
           Birthday: req.body.Birthday,
           Role: req.body.Role
         })
-          .then(user => res.status(201).json(user).semd("User created successfully"))
+          .then(user => res.status(201).json({message: "User created successfully", user: user, status: "success"}))
           .catch(err => {
             res.status(500).send("Error: " + err)
           })

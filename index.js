@@ -3,7 +3,7 @@ const express = require("express"),
   fs = require("fs"),
   path = require("path"),
   cors = require("cors");
- 
+
 
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -27,17 +27,17 @@ const accesLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { f
 // Setup the logger
 app.use(morgan("combined", { stream: accesLogStream }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: (origin, callback) => {
     if (process.env.ALLOWED_ORIGINS.split(',').indexOf(origin) !== -1 || !origin) {
-        callback(null, true)
+      callback(null, true)
     } else {
       var msg = "The CORS policy for this site does not allow access from the specified Origin.";
       return callback(new Error(msg), false);
     }
-},
-optionsSuccessStatus: 200
+  },
+  optionsSuccessStatus: 200
 }));
 
 require("./controllers/auth/auth")(app); /* eslint no-unused-vars: off */
@@ -47,7 +47,7 @@ require("./controllers/auth/passport");
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Movie Oasis!")
+  res.send("Welcome to myFlix")
 });
 
 
@@ -89,7 +89,7 @@ app.get("/documentation", (req, res) => {
 });
 
 // Error handling
-function errorHandler (err, req, res, next) {
+function errorHandler(err, req, res, next) {
   if (res.headersSent) {
     return next(err)
   }

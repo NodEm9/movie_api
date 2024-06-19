@@ -115,8 +115,7 @@ async function updateUser(req, res) {
       Username: req.body.Username,
       Password: hashedPassword,
       Email: req.body.Email,
-      Birthday: req.body.Birthday,
-      Role: req.body.Role,
+      Birthday: req.body.Birthday
     }
   }, { new: true } /** This line makes sure that the updated document is returned **/)
     .then((updateUser) => {

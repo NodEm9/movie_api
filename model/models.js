@@ -41,7 +41,10 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  birthday: Date,
+  birthday: {
+    type: Date,
+    required: true
+  },
   Role: {
     type: String,
     default: 'user',

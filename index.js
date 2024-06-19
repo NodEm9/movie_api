@@ -46,17 +46,11 @@ require("./controllers/auth/passport");
 
 app.use(express.static("public"));
 
-// app.get("/", (req, res) => {
-//   res.send("Welcome to myFlix")
-// });
-
-
 // Movies routes
 app.get("/movies", passport.authenticate("jwt", { session: false }), movies.getMovies);
 app.get("/movies/:title", passport.authenticate("jwt", { session: false }), movies.getMovieByTitle);
 app.get("/movies/genre/:genreName", passport.authenticate("jwt", { session: false }), movies.getGenreByName);
 app.get("/movies/director/:directorName", passport.authenticate("jwt", { session: false }), movies.getDirectorByName);
-
 
 // Users routes
 app.get("/users", passport.authenticate("jwt", { session: false }), users.getUsers);

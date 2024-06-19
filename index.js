@@ -46,9 +46,9 @@ require("./controllers/auth/passport");
 
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.send("Welcome to myFlix")
-});
+// app.get("/", (req, res) => {
+//   res.send("Welcome to myFlix")
+// });
 
 
 // Movies routes

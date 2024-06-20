@@ -22,7 +22,7 @@ const movieSchema = mongoose.Schema({
   },
   Actors: [String],
   ReleaseDate: Date,
-  ImagePath: String,
+  ImageUrl: String,
   Rating: Number,
   Featured: Boolean
 });

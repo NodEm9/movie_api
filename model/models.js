@@ -9,7 +9,7 @@ const movieSchema = mongoose.Schema({
   },
   Description: {
     type: String,
-    required: true
+    required: true 
   },
   Genre: {
     name: String,

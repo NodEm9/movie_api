@@ -20,7 +20,7 @@ const movieSchema = mongoose.Schema({
     bio: String,
     birthyear: Date
   },
-  Actors: [
+  Actor: [
     { name: String }
   ],
   ReleaseDate: Date,

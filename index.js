@@ -7,7 +7,11 @@ const express = require("express"),
 
 const mongoose = require("mongoose");
 
-const alllowedOrigins = ["https://myflix-movieoasis.netlify.app", "http://localhost:8080", "http://localhost:1234"];
+const allowedOrigins = [
+  "https://myflix-movieoasis.netlify.app",
+  "http://localhost:8080",
+  "http://localhost:1234"
+];
 
 
 mongoose.connect(process.env.MONGO_URI, { dbName: "movieDB" });
@@ -31,7 +35,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: (origin, callback) => {
-    if (alllowedOrigins.split(',').indexOf(origin) !== -1 || !origin) {
+    if (allowedOrigins.split(',').indexOf(origin) !== -1 || !origin) {
       callback(null, true) 
     } else {
       var msg = "The CORS policy for this site does not allow access from the specified Origin.";

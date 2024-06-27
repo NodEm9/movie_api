@@ -27,17 +27,7 @@ const accesLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { f
 app.use(morgan("combined", { stream: accesLogStream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
-      return callback(new Error(message), false);
-    } else {
-        callback(new Error('Not allowed by CORS'));
-    }
-  },
-  optionsSuccessStatus: 200
-}));
+app.use(cors());
 
 require("./controllers/auth/auth")(app); /* eslint no-unused-vars: off */
 let passport = require("passport");

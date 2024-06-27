@@ -8,7 +8,7 @@ const express = require("express"),
 const mongoose = require("mongoose");
 
 const allowedOrigins = [
-  "my-flix-app-three.vercel.app",
+  "https://my-flix-app-three.vercel.app",
   "https://myflix-movieoasis.netlify.app",
   "http://localhost:8080",
   "http://localhost:1234"

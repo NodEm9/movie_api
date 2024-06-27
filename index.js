@@ -13,7 +13,7 @@ const alllowedOrigins = ["https://myflix-movieoasis.netlify.app", "http://localh
 
 mongoose.connect(process.env.MONGO_URI, { dbName: "movieDB" });
 
-const { check } = require("express-validator");
+const { check } = require("express-validator"); 
 
 let movies = require("./controllers/movies.js");
 let users = require("./controllers/users.js");

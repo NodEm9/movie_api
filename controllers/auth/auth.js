@@ -3,8 +3,7 @@ const jwt = require("jsonwebtoken"),
   
 require("./passport.js");
 
-const dotenv = require("dotenv");
-dotenv.config(); 
+require("dotenv").config();
 
 
 let generateJWTToken = (user) => {

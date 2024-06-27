@@ -3,9 +3,8 @@ const passport = require('passport'),
   Models = require('../../model/models.js'),
   passportJwt = require('passport-jwt');
 
-const dotenv = require('dotenv');
-dotenv.config();
-dotenv.config()
+require('dotenv').config();
+
 
 
 let Users = Models.User,

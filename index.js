@@ -4,12 +4,11 @@ const express = require("express"),
   path = require("path"),
   cors = require("cors");
 
-const allowedOrigins = ["http://localhost:1234", "http://localhost:8080", "https://myflix-app-led6.onrender.com", "https://myflix-movieoasis.netlify.app"];
 
 const mongoose = require("mongoose");
 
-
 mongoose.connect(process.env.MONGO_URI, { dbName: "movieDB" });
+const allowedOrigins = require("./config/allowedOrign.js");
 
 const { check } = require("express-validator");
 
@@ -29,14 +28,15 @@ app.use(morgan("combined", { stream: accesLogStream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isn’t found on the list of allowed origins
-        let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
-        return callback(new Error(message), false);
-      }
-      return callback(null, true);
+  origin: (origin, callback) => {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+      return callback(new Error(message), false);
+    } else {
+        callback(new Error('Not allowed by CORS'));
     }
+  },
+  optionsSuccessStatus: 200
 }));
 
 require("./controllers/auth/auth")(app); /* eslint no-unused-vars: off */

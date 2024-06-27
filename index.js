@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_URI, { dbName: "movieDB" });
 const { check } = require("express-validator"); 
 
 let movies = require("./controllers/movies.js");
-let users = require("./controllers/users.js");
+let users = require("./controllers/users.js"); 
 
 const port = process.env.PORT || 8080; /* eslint no-undef: off */
 

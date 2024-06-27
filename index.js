@@ -4,23 +4,17 @@ const express = require("express"),
   path = require("path"),
   cors = require("cors");
 
+const allowedOrigins = ["https://my-flix-app-three.vercel.app", "https://myflix-movieoasis.netlify.app", "http://localhost:1234", "http://localhost:8080"];
 
 const mongoose = require("mongoose");
-
-const allowedOrigins = [
-  "https://my-flix-app-three.vercel.app",
-  "https://myflix-movieoasis.netlify.app",
-   "http://localhost:1234",
-  "http://localhost:8080"
-];
 
 
 mongoose.connect(process.env.MONGO_URI, { dbName: "movieDB" });
 
-const { check } = require("express-validator"); 
+const { check } = require("express-validator");
 
 let movies = require("./controllers/movies.js");
-let users = require("./controllers/users.js"); 
+let users = require("./controllers/users.js");
 
 const port = process.env.PORT || 8080; /* eslint no-undef: off */
 
@@ -37,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: (origin, callback) => {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true) 
+      callback(null, true)
     } else {
       var msg = "The CORS policy for this site does not allow access from the specified Origin.";
       return callback(new Error(msg), false);

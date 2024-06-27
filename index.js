@@ -6,7 +6,6 @@ const express = require("express"),
 
 
 const mongoose = require("mongoose");
-require("dotenv").config();
 
 const alllowedOrigins = ["https://myflix-movieoasis.netlify.app", "http://localhost:8080", "http://localhost:1234"];
 

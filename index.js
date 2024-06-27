@@ -26,7 +26,7 @@ const accesLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { f
 // Setup the logger
 app.use(morgan("combined", { stream: accesLogStream }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); 
 app.use(cors({
   origin: (origin, callback) => {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {

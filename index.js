@@ -4,7 +4,7 @@ const express = require("express"),
   path = require("path"),
   cors = require("cors");
 
-const allowedOrigins = ["http://localhost:1234", "http://localhost:8080", "https://my-flix-app-three.vercel.app/",  "https://myflix-movieoasis.netlify.app"];
+const allowedOrigins = ["http://localhost:1234", "http://localhost:8080", "https://my-flix-app-three.vercel.app/", "https://myflix-movieoasis.netlify.app"];
 
 const mongoose = require("mongoose");
 

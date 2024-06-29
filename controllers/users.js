@@ -83,6 +83,22 @@ async function addFavoriteMovie(req, res) {
     });
 };
 
+async function getFavoriteMovies(req, res) {
+  await Users.findOne({ Username: req.params.Username })
+    .select("favoriteMovies")
+    .populate("favoriteMovies")
+    .exec()
+    .then(user => {
+      if (user) {
+        res.status(200).json(user.favoriteMovies)
+      } else {
+        res.status(404).send("User not found")
+      }
+    }).catch(err => {
+      res.status(500).send("Error: " + err)
+    });
+};
+
 // Remove favorite movies from user favorite movies array list
 async function removeFavoriteMovie(req, res) {
   await Users.findOneAndUpdate({ Username: req.params.Username }, {
@@ -143,6 +159,7 @@ module.exports = {
   addUser,
   getUserByUsername,
   addFavoriteMovie,
+  getFavoriteMovies,
   removeFavoriteMovie,
   updateUser,
   deleteUser

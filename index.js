@@ -62,6 +62,7 @@ app.put("/users/:Username", [
   users.updateUser);
 
 app.post("/users/:Username/movies/:MovieID", passport.authenticate("jwt", { session: false }), users.addFavoriteMovie);
+app.get("/users/:Username/movies", passport.authenticate("jwt", { session: false }), users.getFavoriteMovies);
 app.delete("/users/:Username", passport.authenticate("jwt", { session: false }), users.deleteUser);
 app.delete("/users/:Username/movies/:MovieID", passport.authenticate("jwt", { session: false }), users.removeFavoriteMovie);
 
